@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: white;
+}
+
+h2 {
+    color: #333;
+}
+
+video {
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+::cue {
+    color: white;
+    font-size: 1.2em;
+    background-color: rgba(33, 21, 8, 0.6);
+}

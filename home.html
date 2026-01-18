@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mines-vs-Treasure</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="gameTitle">Welcome to Mines-vs-Treasure</h1>
+        <h2 class="home-text">Enter your name:</h2>
+        <input type="text" id="playerName" class="name">
+        <h2 class="home-text">Select Level:</h2>
+        <select id="level">
+            <option value="easy">Easy (10 Bombs)</option>
+            <option value="hard">Hard (20 Bombs)</option>
+        </select>
+        <button id="startGame">Start Game</button>
+        <p id="warningMessage"></p>
+    </div>
+
+    <script>
+    document.getElementById('startGame').onclick = function() {
+    const playerName = document.getElementById('playerName').value.trim();
+    const level = document.getElementById('level').value;
+
+    if (playerName === '') {
+        document.getElementById('warningMessage').innerText = 'Please enter your name before starting the game.';
+        document.getElementById('warningMessage').style.display = 'block';
+        return;
+    }
+
+    localStorage.setItem('playerName', playerName);
+    localStorage.setItem('level', level);
+
+    window.location.href = 'game.html';
+    };
+    </script>
+    
+</body>
+</html>

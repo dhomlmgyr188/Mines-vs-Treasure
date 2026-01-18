@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mines-vs-Treasure</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <audio id="backgroundMusic" src="assets/sounds/background-sound.mp3" loop></audio>
+    <audio id="explosionSound" src="assets/sounds/bomb-sound.mp3"></audio>
+    <audio id="treasureSound" src="assets/sounds/treasure-sound.mp3"></audio>
+    <audio id="clickSound" src="assets/sounds/click-sound.mp3"></audio>
+    <audio id="gameOverMusic" src="assets/sounds/game-over-sound.mp3"></audio>
+
+    <div class="container">
+        <h1 id="gameTitle">Mines-vs-Treasure</h1>
+        <h2 id="playerDisplay"></h2>
+        <h3 class="Remaining">Remaining attempts: <span id="remainingAttempts"></span></h3>
+        <div id="gameBoard"></div>
+        <p id="gameMessage"></p>
+        <button id="backHome">Back Home</button>
+        <button id="endGame">Reload Game</button>
+        <button id="toggleMusic">Play Music</button>
+    </div>
+
+    <script>
+    window.onload = function() {
+    const playerName = localStorage.getItem('playerName');
+    const level = localStorage.getItem('level');
+    document.getElementById('playerDisplay').innerText = `Welcome: ${playerName}`;
+    document.getElementById('remainingAttempts').innerText = level === 'easy' ? 10 : 20;
+    initGame();
+    };
+
+    document.getElementById('backHome').onclick = function() {
+    window.location.href = 'home.html';
+    };
+
+    document.getElementById('endGame').onclick = function() {
+    location.reload();
+    };
+
+    document.getElementById('toggleMusic').onclick = function() {
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    backgroundMusic.volume = 0.5;
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        this.innerText = 'Pause Music';
+    } else {
+        backgroundMusic.pause();
+        this.innerText = 'Play Music';
+        }
+    };
+    </script>
+
+    <script src="js/gameboard.js"></script>
+</body>
+</html>

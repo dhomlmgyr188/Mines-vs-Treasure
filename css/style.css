@@ -1,0 +1,142 @@
+/* تنسيق الصفحة الرئيسية */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+#gameTitle{
+    color: #4566ba;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#playerDisplay{
+    
+    color: #a8862f;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.Remaining{
+    color: #000000;
+    font-size: 1em;
+    font-weight: 300;  
+}
+
+#remainingAttempts{
+    color: #c90303;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.home-text{
+    display: block;
+    color: #000000;
+    font-size: 1em;
+    font-weight: 300;
+    margin-bottom: 0.4em;
+}
+#warningMessage{
+    color: #c90303;
+    display: none;
+}
+.container {
+    background-color: #fffcf6;
+    border: 1px solid black;
+    align-content: center;
+    padding-left: 7vh;
+    width: 70vh;
+    height: 90vh;
+    border-radius: 5px;
+}
+input{
+    padding: 0.8em;
+    font-size: 1em;
+    width: 20.3em;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+select{
+    padding: 0.8em;
+    font-size: 1em;
+    width: 22em;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+#startGame{
+    display: block;
+    color: white;
+    background-color: #a8862f;
+    border: 1px solid black;
+    width: 19.6em;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+} 
+
+#startGame:hover{
+    background-color: #705920;
+}
+
+/* تنسيق صفحة اللعبة */
+
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    width: 65vh;
+    margin-bottom: 10px;
+}
+
+#gameBoard button{
+    height: 28px;
+    width: 28px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #4566ba;
+    transition: 0.3s;
+}
+#gameBoard button:hover {
+    background-color: #303a56;
+}
+
+#gameBoard button:disabled {
+    background-color: #a8862f;
+    cursor: not-allowed;
+}
+
+#backHome, #endGame, #toggleMusic{
+    color: white;
+    background-color: #a8862f;
+    border: 1px solid black;
+    width: 20vh;
+    height: 8vh;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 1em;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#backHome:hover, #endGame:hover, #toggleMusic:hover {
+    background-color: #705920;
+}
+
+
+#gameMessage {
+    color: #c90303;
+    font-size: 10px;
+    font-weight: 700;
+}
+

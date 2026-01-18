@@ -1,0 +1,86 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mine game</title>
+        <style>
+            body{
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-height: 100vh;
+                justify-content: center;
+                background: #f4f4f4;
+            }
+            .grid{
+                display: grid;
+                grid-template-columns: repeat(5, 60px);
+                gap: 5px;
+            }
+            button{
+                width: 60px;
+                height: 60px;
+                background: lightgray;
+                border: none;
+                cursor: pointer;
+            }
+            button.orange{
+                background: orange;
+            }
+            button.bomb{
+                background: red;
+            }
+            button.win{
+                background: green;
+            }
+            button.prompt{
+                background: yellow;
+            }
+            button.clicked{
+                background: #ccc;
+                cursor: not-allowed;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Mine Game</h1>
+        <div class="grid" id="g"></div>
+        <p id="m"></p>
+        <audio id="b" src="https://www.soundjay.com/button/beeb-07.wav"></audio>
+        <script>
+            const g = document.getElementById('g'), m = document.getElementById('m'), b = document.getElementById('b'),s = 5;
+            const btns = Array.from({length:s*s},(_,i)=>{
+                const btn = document.createElement('button');
+            btn.dataset.i = i; g.appendChild(btn);
+            return btn;
+            });
+            const bombs = new Set();
+            while (bomb.size <5) bombs.add(Math.floor(Math.random()*btns.length));
+            const win = [...Array(btns.length).keys()].find(i=>!bombs.has(i)) || Math.floor(Math.random() *btns.length);
+            bombs.forEach(i=> btns[i].dataset.state='b');
+            btns[win].dataset.state = 'w';
+            const prompt = Math.floor(Math.random()  * btns.length);
+            btns[prompt].classList.add('prompt');
+            b.play();
+            btns.forEach((btn,i) =>btn.addEventListener('click',()=>{
+                if(btn.classList.contains('clicked')) return;
+                btn.classList.add('clicked');
+                btn.classList.remove('prompt');
+                const state = btn.dataset.state;
+                if(state=='b') return end('Game Over!', 'bomb', btn);
+                if(state=='w') return end('You Win!', 'win', btn);
+                const nbrs = getNbrs(i);
+                if (nbrs.some(n=>btns[n].dataset.state==='b'))btn.classList.add('orange');
+            }));
+            const getNbrs = i=>{
+                const r= Math.floor(i/s),c=i%s;
+                return [-1,0,1].flatMap(dr=>[-1,0,1].map(dc=>[r+dr,c+dc]))
+                .filter(([nr,nc])=>nr>=0&&nr<s&&nc>=0&&nc<s&&!(nr===r&&nc===c))
+                .map(([nr,nc])=>nr*s+nc);
+            };
+            
+        </script>
+    </body>
+</html>
